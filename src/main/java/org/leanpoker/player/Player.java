@@ -13,7 +13,7 @@ public class Player {
 //        int f1 = jsonTree.get("current_buy_in").getAsInt();
         System.out.println(request);
 
-        return f1;
+        return 1000;
     }
 
     public static void showdown(JsonElement game) {
