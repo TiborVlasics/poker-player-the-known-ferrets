@@ -46,13 +46,31 @@ public class Player {
 
         }
 
+        //Community card section:
+        ArrayList<String> commRanks = new ArrayList<String>();
+        ArrayList<String> commColors = new ArrayList<String>();
+
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
         System.out.println("Common cards:");
+        JsonArray commonArray = commonCards.getAsJsonArray();
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
+            for (JsonElement ranks: commonArray){
+                //rank:
+                JsonObject rankCommonCard = ranks.getAsJsonObject();
+                commRanks.add(rankCommonCard.get("rank").toString());
+                System.out.println("Common rank: "
+                        + commRanks.get(commRanks.size()-1));
+                //color:
+                commColors.add(rankCommonCard.get("suit").toString());
+                System.out.println("Common suit: "
+                        + commColors.get(commColors.size()-1));
+            }
+            System.out.println("Itten nezzed");
+
         }
-        
+
 
         buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
@@ -62,11 +80,18 @@ public class Player {
     }
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
-            System.out.println("TWOCARDS");
-        if (Arrays.asList(highCards).contains(holdingCards.get(0)) && Arrays.asList(highCards).contains(holdingCards.get(1))) {
+        System.out.println("TWOCARDS");
+        System.out.println(holdingCards);
+        if (Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(0)) && Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(1))) {
+            System.out.println("Yes");
+            if(holdingCards.get(0).equals(holdingCards.get(1))) return buyIn * 3;
+        else return buyIn * 2;
+        }
+        if(holdingCards.get(0).equals(holdingCards.get(1))) return buyIn * 3;
+        else {
+            System.out.println("LOW");
             return buyIn;
         }
-        else return 0;
     }
 
     private int act (ArrayList<String> commRanks, ArrayList<String> myHole, int buyInt) {
