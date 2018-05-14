@@ -105,7 +105,9 @@ public class Player {
         if (isDrill(cardsInHand, commRanks)){
             moneyToBet = moneyToBet * 2;
         }
+
         moneyToBet = 0;
+
         return moneyToBet;
     }
 
