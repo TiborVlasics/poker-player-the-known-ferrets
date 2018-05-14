@@ -51,6 +51,7 @@ public class Player {
 
         //Community card section:
         ArrayList<String> commRanks = new ArrayList<String>();
+        ArrayList<String> commColors = new ArrayList<String>();
 
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
@@ -59,10 +60,15 @@ public class Player {
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
             for (JsonElement ranks: commonArray){
-                JsonObject rankCommonCard =ranks.getAsJsonObject();
+                //rank:
+                JsonObject rankCommonCard = ranks.getAsJsonObject();
                 commRanks.add(rankCommonCard.get("rank").toString());
                 System.out.println("Common rank: "
                         + commRanks.get(commRanks.size()-1));
+                //color:
+                commColors.add(rankCommonCard.get("suit").toString());
+                System.out.println("Common suit: "
+                        + commColors.get(commColors.size()-1));
             }
             System.out.println("Itten nezzed");
 
