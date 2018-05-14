@@ -116,8 +116,9 @@ public class Player {
         addHighCards();
         String firstC = "" + holdingCards.get(0);
         String secondC = "" + holdingCards.get(1);
-        System.out.println("TWOCARDS");
-        System.out.println(holdingCards);
+
+        firstC = firstC.substring(1, firstC.length() - 1);
+        secondC = secondC.substring(1, secondC.length() - 1);
         System.out.println(firstC);
         System.out.println(secondC);
 
