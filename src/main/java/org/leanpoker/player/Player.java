@@ -121,7 +121,7 @@ public class Player {
                 return buyIn / 2;
             }
         }
-        return 0;
+        return buyIn;
     }
 
     private static int act(ArrayList < String > commRanks, ArrayList < String > myHole,int buyInt) {
@@ -141,7 +141,7 @@ public class Player {
         } else if (sameCards == 4) {
             buyInt *= 4;
         } else {
-            buyInt = 0;
+            buyInt = buyInt;
         }
         return buyInt;
     }
