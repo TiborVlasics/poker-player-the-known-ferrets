@@ -98,9 +98,11 @@ public class Player {
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
         addHighCards();
+        String firstC = holdingCards.get(0);
+        String secondC = holdingCards.get(1);
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
-        if (highCards.contains(holdingCards.get(0)) && highCards.contains(holdingCards.get(1))) {
+        if (highCards.contains(firstC) && highCards.contains(secondC)) {
             System.out.println("Yes");
             if(holdingCards.get(0).equals(holdingCards.get(1))){
                 System.out.println("EQAULED CARDS");
