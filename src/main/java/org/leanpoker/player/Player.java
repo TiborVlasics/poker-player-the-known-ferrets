@@ -18,16 +18,16 @@ public class Player {
         int buyIn = buyInJson.getAsInt();
         JsonElement players = cuccok.get("players");
         JsonArray playersArray = players.getAsJsonArray();
-        for (JsonElement element : playersArray) {
-            JsonObject object = players.getAsJsonObject();
-            if (object.get("id").getAsInt() == inAction) {
-                JsonElement holeCards = object.get("hole_cards");
-                JsonArray myHoleArray = holeCards.getAsJsonArray();
-                System.out.println("PLS WORKKKKK!!!");
-                System.out.println(myHoleArray);
-            }
-
-        }
+//        for (JsonElement element : playersArray) {
+//            JsonObject object = players.getAsJsonObject();
+//            if (object.get("id").getAsInt() == inAction) {
+//                JsonElement holeCards = object.get("hole_cards");
+//                JsonArray myHoleArray = holeCards.getAsJsonArray();
+//                System.out.println("PLS WORKKKKK!!!");
+//                System.out.println(myHoleArray);
+//            }
+//
+//        }
 
         System.out.println("FUCK PLAYERS:" + playersArray);
         System.out.println("OUR PLAYERS ID:" + inAction);
