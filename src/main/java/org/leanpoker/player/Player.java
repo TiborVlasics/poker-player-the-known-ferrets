@@ -49,11 +49,23 @@ public class Player {
         System.out.println("FUCK PLAYERS:" + playersArray);
         System.out.println("OUR PLAYERS ID:" + inAction);
 
+        //Community card section:
+        ArrayList<String> commRanks = new ArrayList<String>();
+
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
         System.out.println("Common cards:");
+        JsonArray commonArray = commonCards.getAsJsonArray();
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
+            for (JsonElement ranks: commonArray){
+                JsonObject rankCommonCard =ranks.getAsJsonObject();
+                commRanks.add(rankCommonCard.get("rank").toString());
+                System.out.println("Common rank: "
+                        + commRanks.get(commRanks.size()-1));
+            }
+            System.out.println("Itten nezzed");
+
         }
         buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
