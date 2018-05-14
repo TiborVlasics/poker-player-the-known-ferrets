@@ -44,6 +44,12 @@ public class Player {
         System.out.println("FUCK PLAYERS:" + playersArray);
         System.out.println("OUR PLAYERS ID:" + inAction);
 
+        JsonElement commonCards = cuccok.get("community_cards");
+        JsonArray commonCardsArray = commonCards.getAsJsonArray();
+        for (JsonElement commonCard: commonCardsArray) {
+            System.out.println(commonCard);
+        }
+
         return buyIn;
     }
 
