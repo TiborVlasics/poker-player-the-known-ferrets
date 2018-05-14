@@ -125,7 +125,7 @@ public class Player {
             }
         }
         boolean buyIntBiggerThan300 = buyInt > 300;
-        if (sameCards == 2 && !buyIntBiggerThan300) {
+        if (sameCards == 2) {
             buyInt*=2;
         } else if (sameCards == 3) {
             buyInt*=3;
