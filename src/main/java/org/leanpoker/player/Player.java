@@ -54,7 +54,6 @@ public class Player {
                             + cardsInHand.get(cardsInHand.size()-1));
                 }
             }
-
         }
 
         //Community card section:
@@ -127,9 +126,16 @@ public class Player {
                 }
             }
         }
-        if (sameCards == 2) buyInt*=2;
-        if (sameCards == 3) buyInt*=3;
-        if (sameCards == 4) buyInt*=4;
+        boolean buyIntBiggerThan300 = buyInt > 300;
+        if (sameCards == 2) {
+            buyInt*=2;
+        } else if (sameCards == 3) {
+            buyInt*=3;
+        } else if (sameCards == 4) {
+            buyInt*=4;
+        } else {
+            buyInt = 0;
+        }
         return buyInt;
     }
 
