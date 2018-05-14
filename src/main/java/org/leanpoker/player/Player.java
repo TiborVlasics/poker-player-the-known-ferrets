@@ -121,7 +121,7 @@ public class Player {
         System.out.println(firstC);
         System.out.println(secondC);
 
-        if (firstC.equals("7") || firstC.equals("8") || firstC.equals("9") || firstC.equals("A") || firstC.equals("K") || firstC.equals("J") || firstC.equals("Q") || firstC.equals("10")) {
+        if (firstC.contentEquals("7") || firstC.contentEquals("8") || firstC.contentEquals("9") || firstC.contentEquals("A") || firstC.contentEquals("K") || firstC.contentEquals("J") || firstC.contentEquals("Q") || firstC.contentEquals("10")) {
             System.out.println("ITT");
             if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q") || secondC.equals("10")) {
                 System.out.println("HIGHCARDS");
