@@ -5,6 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.ArrayList;
+
 public class Player {
 
     static String[] highCards = {"7", "8", "9", "10", "J", "Q", "K", "A"};
@@ -20,11 +22,19 @@ public class Player {
         int buyIn = buyInJson.getAsInt();
         JsonElement players = cuccok.get("players");
         JsonArray playersArray = players.getAsJsonArray();
+
+        ArrayList<String> ranksNeeded = new ArrayList<String>();
+
         for (JsonElement element : playersArray) {
             JsonObject object = element.getAsJsonObject();
             if (object.get("id").getAsInt() == inAction) {
                 JsonElement holeCards = object.get("hole_cards");
                 JsonArray myHoleArray = holeCards.getAsJsonArray();
+
+                for(JsonElement ranks: myHoleArray){
+                    JsonObject object = ranks.getAsJsonObject();
+                    ranksNeeded.add(object.get("rank").toString());
+                }
                 System.out.println("PLS WORKKKKK!!!");
                 System.out.println(myHoleArray);
             }
