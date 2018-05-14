@@ -63,11 +63,15 @@ public class Player {
     }
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
-            System.out.println("TWOCARDS");
+        System.out.println("TWOCARDS");
         if (Arrays.asList(highCards).contains(holdingCards.get(0)) && Arrays.asList(highCards).contains(holdingCards.get(1))) {
+            System.out.println("Yes");
             return buyIn;
         }
-        else return 0;
+        else {
+            System.out.println("LOW");
+            return 0;
+        }
     }
 
 
