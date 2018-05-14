@@ -1,7 +1,7 @@
 package org.leanpoker.player;
 
 import com.google.gson.JsonElement;
-import org.json.*;
+import com.google.gson.JsonParser;
 
 public class Player {
 
