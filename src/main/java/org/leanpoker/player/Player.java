@@ -58,6 +58,7 @@ public class Player {
         JsonArray commonArray = commonCards.getAsJsonArray();
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
+            /*
             for (JsonElement ranks: commonArray){
                 JsonObject rankCommonCard =ranks.getAsJsonObject();
                 commRanks.add(rankCommonCard.get("rank").toString());
@@ -65,6 +66,7 @@ public class Player {
                         + commRanks.get(commRanks.size()-1));
             }
             System.out.println("Itten nezzed");
+            */
 
         }
         buyIn = holdingCards(ranksNeeded, buyIn);
