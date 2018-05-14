@@ -48,6 +48,7 @@ public class Player {
 
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
+        System.out.println("Common cards:");
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
         }
