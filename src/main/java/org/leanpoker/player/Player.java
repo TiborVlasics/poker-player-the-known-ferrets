@@ -107,17 +107,19 @@ public class Player {
         String secondC = holdingCards.get(1);
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
-        if (highCards.contains(firstC) && highCards.contains(secondC)) {
-            System.out.println("Yes");
-            if(holdingCards.get(0).equals(holdingCards.get(1))){
-                System.out.println("EQAULED CARDS");
-                return buyIn * 3;
+
+        if (firstC.equals("7") || firstC.equals("8")  || firstC.equals("9") || firstC.equals("A")  || firstC.equals("K")  || firstC.equals("J") || firstC.equals("Q")){
+            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")){
+                System.out.println("HIGHCARDS");
+                if(holdingCards.get(0).equals(holdingCards.get(1))){
+                    System.out.println("EQAULED CARDS");
+                    return buyIn * 3;
             }
-        else return buyIn * 2;
+            return buyIn * 2;
         }
         else {
             System.out.println("LOW");
-            return buyIn;
+            return buyIn /2;
         }
     }
 
