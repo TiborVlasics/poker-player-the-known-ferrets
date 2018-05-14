@@ -66,11 +66,11 @@ public class Player {
         System.out.println("TWOCARDS");
         if (Arrays.asList(highCards).contains(holdingCards.get(0)) && Arrays.asList(highCards).contains(holdingCards.get(1))) {
             System.out.println("Yes");
-            return buyIn;
+            return buyIn * 2;
         }
         else {
             System.out.println("LOW");
-            return 0;
+            return buyIn;
         }
     }
 
