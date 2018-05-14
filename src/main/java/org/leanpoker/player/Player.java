@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.List;
 import java.util.Arrays;
@@ -40,14 +42,9 @@ public class Player {
                     System.out.println("rank: "
                             + ranksNeeded.get(ranksNeeded.size()-1));
                 }
-                System.out.println("PLS WORKKKKK!!!");
-                System.out.println(myHoleArray);
             }
 
         }
-
-        System.out.println("FUCK PLAYERS:" + playersArray);
-        System.out.println("OUR PLAYERS ID:" + inAction);
 
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
@@ -55,6 +52,8 @@ public class Player {
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
         }
+        
+
         buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
     }
@@ -68,6 +67,21 @@ public class Player {
             return buyIn;
         }
         else return 0;
+    }
+
+    private int act (ArrayList<String> commRanks, ArrayList<String> myHole, int buyInt) {
+        int sameCards = 0;
+        for (String myCard: myHole) {
+            for (String community : commRanks) {
+                if (myCard.equals(community)) {
+                    sameCards +=1;
+                }
+            }
+        }
+        if (sameCards == 2) buyInt*=2;
+        if (sameCards == 3) buyInt*=3;
+        if (sameCards == 4) buyInt*=4;
+        return buyInt;
     }
 
 
