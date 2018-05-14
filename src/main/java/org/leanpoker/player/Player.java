@@ -114,10 +114,12 @@ public class Player {
         String secondC = "" + holdingCards.get(1);
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
+        System.out.println(firstC);
+        System.out.println(secondC);
 
-        if (firstC.equals("7") || firstC.equals("8") || firstC.equals("9") || firstC.equals("A") || firstC.equals("K") || firstC.equals("J") || firstC.equals("Q")) {
+        if (firstC.equals("7") || firstC.equals("8") || firstC.equals("9") || firstC.equals("A") || firstC.equals("K") || firstC.equals("J") || firstC.equals("Q") || firstC.equals("10")) {
             System.out.println("ITT");
-            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")) {
+            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q") || secondC.equals("10")) {
                 System.out.println("HIGHCARDS");
                 if (holdingCards.get(0).equals(holdingCards.get(1))) {
                     System.out.println("EQAULED CARDS");
