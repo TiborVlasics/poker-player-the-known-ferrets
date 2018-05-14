@@ -4,6 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.util.*;
+import java.util.List;
+import java.util.Arrays;
 
 import java.util.ArrayList;
 
@@ -52,10 +55,20 @@ public class Player {
         for (JsonElement commonCard: commonCardsArray) {
             System.out.println(commonCard);
         }
-
+        buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
     }
 
     public static void showdown(JsonElement game) {
     }
+
+    public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
+        if (Arrays.asList(highCards).contains(holdingCards.get(0)) && Arrays.asList(highCards).contains(holdingCards.get(1))) {
+            System.out.println("TWOCARDS");
+            return buyIn;
+        }
+        else return 0;
+    }
+
+
 }
