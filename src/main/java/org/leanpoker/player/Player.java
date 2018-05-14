@@ -73,7 +73,7 @@ public class Player {
             System.out.println("Itten nezzed");
 
         }
-        buyIn = holdingCards(ranksNeeded, buyIn);
+        //buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
     }
 
@@ -83,12 +83,11 @@ public class Player {
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
-        if (Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(0)) && Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(1))) {
+        if (highCards.contains(holdingCards.get(0)) && Arrays.asList(holdingCards).contains(holdingCards.get(1))) {
             System.out.println("Yes");
             if(holdingCards.get(0).equals(holdingCards.get(1))) return buyIn * 3;
         else return buyIn * 2;
         }
-        if(holdingCards.get(0).equals(holdingCards.get(1))) return buyIn * 3;
         else {
             System.out.println("LOW");
             return buyIn;
