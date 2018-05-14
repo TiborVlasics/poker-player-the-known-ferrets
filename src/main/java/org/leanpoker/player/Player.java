@@ -124,11 +124,13 @@ public class Player {
                     return buyIn * 3;
                 }
                 return buyIn * 2;
-            } else {
+            }
+            else {
                 System.out.println("LOW");
                 return buyIn / 2;
             }
         }
+        System.out.println("BASZIK MUKODNI");
         return 0;
     }
 
