@@ -7,6 +7,8 @@ import com.google.gson.JsonParser;
 
 public class Player {
 
+    static String[] highCards = {"7", "8", "9", "10", "J", "Q", "K", "A"};
+
     static final String VERSION = "Default Java folding player";
 
     public static int betRequest(JsonElement request) {
