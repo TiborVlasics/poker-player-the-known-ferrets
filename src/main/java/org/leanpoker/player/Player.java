@@ -30,6 +30,7 @@ public class Player {
     static final String VERSION = "Default Java folding player";
 
     public static int betRequest(JsonElement request) {
+        int moneyToBet = 0;
         System.out.println(request);
         JsonObject cuccok = request.getAsJsonObject();
         JsonElement buyInJson = cuccok.get("current_buy_in");
@@ -38,6 +39,7 @@ public class Player {
         int buyIn = buyInJson.getAsInt();
         JsonElement players = cuccok.get("players");
         JsonArray playersArray = players.getAsJsonArray();
+        moneyToBet = buyIn;
 
         ArrayList<String> cardsInHand = new ArrayList<String>();
 
@@ -45,6 +47,9 @@ public class Player {
             JsonObject object = element.getAsJsonObject();
             if (object.get("id").getAsInt() == inAction) {
                 JsonElement holeCards = object.get("hole_cards");
+                JsonElement betJson = object.get("bet");
+                int bet  = betJson.getAsInt();
+                moneyToBet -= bet;
                 JsonArray myHoleArray = holeCards.getAsJsonArray();
 
                 for(JsonElement ranks: myHoleArray){
@@ -83,13 +88,14 @@ public class Player {
         }
         if (commRanks.size() > 0) commIsEmpty = false;
         System.out.println("Community cards is empty: " + commIsEmpty);
+
         if (commIsEmpty) {
-            buyIn = holdingCards(cardsInHand, buyIn);
+            moneyToBet= holdingCards(cardsInHand, moneyToBet);
         } else {
-            buyIn = act(commRanks, cardsInHand, buyIn);
+            moneyToBet= act(commRanks, cardsInHand, moneyToBet);
         }
 
-        return buyIn;
+        return moneyToBet;
     }
 
     public static void showdown(JsonElement game) {
