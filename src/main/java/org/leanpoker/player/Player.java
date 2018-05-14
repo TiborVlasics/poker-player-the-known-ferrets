@@ -102,6 +102,10 @@ public class Player {
             moneyToBet= act(commRanks, cardsInHand, moneyToBet);
         }
 
+        if (isDrill(cardsInHand, commRanks)){
+            moneyToBet = moneyToBet * 2;
+        }
+
         return moneyToBet;
     }
 
