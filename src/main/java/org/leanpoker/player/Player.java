@@ -77,7 +77,7 @@ public class Player {
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
-        if (Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(0)) && Arrays.asList(highCards).contains(holdingCards.get(1))) {
+        if (Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(0)) && Arrays.asList("7", "8", "9", "10", "J", "Q", "K", "A").contains(holdingCards.get(1))) {
             System.out.println("Yes");
             return buyIn * 2;
         }
