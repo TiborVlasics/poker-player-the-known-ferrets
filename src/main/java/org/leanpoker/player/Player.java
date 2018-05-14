@@ -153,5 +153,33 @@ public class Player {
         return buyInt;
     }
 
+    private static boolean isDrill(ArrayList<String> cardsInHand, ArrayList<String> commRanks) {
+        int counter = 0;
+        int iteration = 0;
+        String firstCard = "asd";
+        for (String cardRank : cardsInHand) {
+            if (iteration == 0) {
+                firstCard = cardRank;
+            }
+            if (iteration > 0) {
+                if (firstCard.equals(cardRank)) {
+                    counter = 1;
+                }
+            }
+        }
+
+        for (String handRank : cardsInHand) {
+            for (String commRank : commRanks) {
+                if (handRank.equals(commRank)) {
+                    counter++;
+                }
+            }
+        }
+        if (counter == 2) {
+            return true;
+        }
+        return false;
+    }
+
 }
 
