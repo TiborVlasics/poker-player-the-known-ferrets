@@ -42,23 +42,26 @@ public class Player {
         moneyToBet = buyIn;
 
         ArrayList<String> cardsInHand = new ArrayList<String>();
+        try {
+            for (JsonElement element : playersArray) {
+                JsonObject object = element.getAsJsonObject();
+                if (object.get("id").getAsInt() == inAction) {
+                    JsonElement holeCards = object.get("hole_cards");
+                    JsonElement betJson = object.get("bet");
+                    int bet = betJson.getAsInt();
+                    moneyToBet -= bet;
+                    JsonArray myHoleArray = holeCards.getAsJsonArray();
 
-        for (JsonElement element : playersArray) {
-            JsonObject object = element.getAsJsonObject();
-            if (object.get("id").getAsInt() == inAction) {
-                JsonElement holeCards = object.get("hole_cards");
-                JsonElement betJson = object.get("bet");
-                int bet  = betJson.getAsInt();
-                moneyToBet -= bet;
-                JsonArray myHoleArray = holeCards.getAsJsonArray();
-
-                for(JsonElement ranks: myHoleArray){
-                    JsonObject rankObject = ranks.getAsJsonObject();
-                    cardsInHand.add(rankObject.get("rank").toString());
-                    System.out.println("rank: "
-                            + cardsInHand.get(cardsInHand.size()-1));
+                    for (JsonElement ranks : myHoleArray) {
+                        JsonObject rankObject = ranks.getAsJsonObject();
+                        cardsInHand.add(rankObject.get("rank").toString());
+                        System.out.println("rank: "
+                                + cardsInHand.get(cardsInHand.size() - 1));
+                    }
                 }
             }
+        }catch(Exception ex){
+            System.out.println("ERROR!!!");
         }
 
         //Community card section:
@@ -70,21 +73,25 @@ public class Player {
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
         System.out.println("Common cards:");
         JsonArray commonArray = commonCards.getAsJsonArray();
-        for (JsonElement commonCard: commonCardsArray) {
-            System.out.println(commonCard);
-            for (JsonElement ranks: commonArray){
-                //rank:
-                JsonObject rankCommonCard = ranks.getAsJsonObject();
-                commRanks.add(rankCommonCard.get("rank").toString());
-                System.out.println("Common rank: "
-                        + commRanks.get(commRanks.size()-1));
-                //color:
-                commColors.add(rankCommonCard.get("suit").toString());
-                System.out.println("Common suit: "
-                        + commColors.get(commColors.size()-1));
+        try{
+            for (JsonElement commonCard: commonCardsArray) {
+                System.out.println(commonCard);
+                for (JsonElement ranks : commonArray) {
+                    //rank:
+                    JsonObject rankCommonCard = ranks.getAsJsonObject();
+                    commRanks.add(rankCommonCard.get("rank").toString());
+                    System.out.println("Common rank: "
+                            + commRanks.get(commRanks.size() - 1));
+                    //color:
+                    commColors.add(rankCommonCard.get("suit").toString());
+                    System.out.println("Common suit: "
+                            + commColors.get(commColors.size() - 1));
+                }
             }
             System.out.println("Itten nezzed");
 
+        }catch(Exception ex){
+            System.out.println("ANOTHER ERROR!!");
         }
         if (commRanks.size() > 0) commIsEmpty = false;
         System.out.println("Community cards is empty: " + commIsEmpty);
