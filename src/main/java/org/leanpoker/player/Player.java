@@ -12,12 +12,14 @@ public class Player {
     public static int betRequest(JsonElement request) {
         System.out.println(request);
         JsonObject cuccok = request.getAsJsonObject();
-        JsonElement buyIn = cuccok.get("current_buy_in");
+        JsonElement buyInJson = cuccok.get("current_buy_in");
+        int buyIn = buyInJson.getAsInt();
+        JsonElement players = cuccok.get("players");
 
-        System.out.println("FUCK Buy in:" + buyIn.toString());
-        System.out.println("hello");
 
-        return 1000;
+        System.out.println("FUCK PLAYERS:" + players);
+
+        return buyIn;
     }
 
     public static void showdown(JsonElement game) {
