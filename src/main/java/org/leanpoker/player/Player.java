@@ -108,42 +108,43 @@ public class Player {
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
 
-        if (firstC.equals("7") || firstC.equals("8")  || firstC.equals("9") || firstC.equals("A")  || firstC.equals("K")  || firstC.equals("J") || firstC.equals("Q")){
-            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")){
+        if (firstC.equals("7") || firstC.equals("8") || firstC.equals("9") || firstC.equals("A") || firstC.equals("K") || firstC.equals("J") || firstC.equals("Q")) {
+            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")) {
                 System.out.println("HIGHCARDS");
-                if(holdingCards.get(0).equals(holdingCards.get(1))){
+                if (holdingCards.get(0).equals(holdingCards.get(1))) {
                     System.out.println("EQAULED CARDS");
                     return buyIn * 3;
+                }
+                return buyIn * 2;
+            } else {
+                System.out.println("LOW");
+                return buyIn / 2;
             }
-            return buyIn * 2;
         }
-        else {
-            System.out.println("LOW");
-            return buyIn /2;
-        }
+        return 0;
     }
 
-    private static int act (ArrayList<String> commRanks, ArrayList<String> myHole, int buyInt) {
+    private static int act(ArrayList < String > commRanks, ArrayList < String > myHole,int buyInt) {
         int sameCards = 0;
-        for (String myCard: myHole) {
+        for (String myCard : myHole) {
             for (String community : commRanks) {
                 if (myCard.equals(community)) {
-                    sameCards +=1;
+                    sameCards += 1;
                 }
             }
         }
         boolean buyIntBiggerThan300 = buyInt > 300;
         if (sameCards == 2) {
-            buyInt*=2;
+            buyInt *= 2;
         } else if (sameCards == 3) {
-            buyInt*=3;
+            buyInt *= 3;
         } else if (sameCards == 4) {
-            buyInt*=4;
+            buyInt *= 4;
         } else {
             buyInt = 0;
         }
         return buyInt;
     }
 
-
 }
+
