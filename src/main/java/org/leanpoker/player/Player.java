@@ -31,7 +31,7 @@ public class Player {
 
                 for(JsonElement ranks: myHoleArray){
                     JsonObject object = ranks.getAsJsonObject();
-                    ranksNeeded.add(object.get("rank"));
+                    ranksNeeded.add(object.get("rank").toString());
                 }
                 System.out.println("PLS WORKKKKK!!!");
                 System.out.println(myHoleArray);
