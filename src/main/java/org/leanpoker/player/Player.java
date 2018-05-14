@@ -97,8 +97,8 @@ public class Player {
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
         addHighCards();
-        String firstC = holdingCards.get(0);
-        String secondC = holdingCards.get(1);
+        String firstC = holdingCards.get(0).substring(0);
+        String secondC = holdingCards.get(1).toString();
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
 
