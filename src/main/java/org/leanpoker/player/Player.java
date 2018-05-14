@@ -106,8 +106,6 @@ public class Player {
             moneyToBet = moneyToBet * 2;
         }
 
-        moneyToBet = 0;
-
         return moneyToBet;
     }
 
