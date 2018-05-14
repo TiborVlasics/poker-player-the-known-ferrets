@@ -12,6 +12,9 @@ public class Player {
 //        JsonElement jsonTree = jsonParser.parse(request);
 //        int f1 = jsonTree.get("current_buy_in").getAsInt();
         System.out.println(request);
+        int buyIn = request.getAsInt("current_buy_in");
+
+        System.out.println(buyIn);
         System.out.println("hello");
 
         return 1000;
