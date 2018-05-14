@@ -12,7 +12,18 @@ import java.util.ArrayList;
 
 public class Player {
 
-    static String[] highCards = {"7", "8", "9", "10", "J", "Q", "K", "A"};
+    public static List<String> highCards = new ArrayList<String>();
+
+    public static void addHighCards(){
+        highCards.add("7");
+        highCards.add("8");
+        highCards.add("9");
+        highCards.add("10");
+        highCards.add("J");
+        highCards.add("Q");
+        highCards.add("K");
+        highCards.add("A");
+    }
 
     static final String VERSION = "Default Java folding player";
 
@@ -73,7 +84,7 @@ public class Player {
             System.out.println("Itten nezzed");
 
         }
-        //buyIn = holdingCards(ranksNeeded, buyIn);
+        buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
     }
 
@@ -81,11 +92,15 @@ public class Player {
     }
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
+        addHighCards();
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
-        if (highCards.contains(holdingCards.get(0)) && Arrays.asList(holdingCards).contains(holdingCards.get(1))) {
+        if (highCards.contains(holdingCards.get(0)) && highCards.contains(holdingCards.get(1))) {
             System.out.println("Yes");
-            if(holdingCards.get(0).equals(holdingCards.get(1))) return buyIn * 3;
+            if(holdingCards.get(0).equals(holdingCards.get(1))){
+                System.out.println("EQAULED CARDS");
+                return buyIn * 3;
+            }
         else return buyIn * 2;
         }
         else {
