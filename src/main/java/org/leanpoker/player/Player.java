@@ -103,8 +103,8 @@ public class Player {
 
     public static int holdingCards (ArrayList<String> holdingCards, int buyIn) {
         addHighCards();
-        String firstC = holdingCards.get(0).substring(0);
-        String secondC = holdingCards.get(1).toString();
+        String firstC = "" + holdingCards.get(0);
+        String secondC = "" + holdingCards.get(1);
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
 
@@ -122,7 +122,7 @@ public class Player {
                 return buyIn / 2;
             }
         }
-        return buyIn;
+        return 0;
     }
 
     private static int act(ArrayList < String > commRanks, ArrayList < String > myHole,int buyInt) {
