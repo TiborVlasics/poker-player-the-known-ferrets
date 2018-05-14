@@ -39,7 +39,7 @@ public class Player {
         JsonElement players = cuccok.get("players");
         JsonArray playersArray = players.getAsJsonArray();
 
-        ArrayList<String> ranksNeeded = new ArrayList<String>();
+        ArrayList<String> cardsInHand = new ArrayList<String>();
 
         for (JsonElement element : playersArray) {
             JsonObject object = element.getAsJsonObject();
@@ -49,9 +49,9 @@ public class Player {
 
                 for(JsonElement ranks: myHoleArray){
                     JsonObject rankObject = ranks.getAsJsonObject();
-                    ranksNeeded.add(rankObject.get("rank").toString());
+                    cardsInHand.add(rankObject.get("rank").toString());
                     System.out.println("rank: "
-                            + ranksNeeded.get(ranksNeeded.size()-1));
+                            + cardsInHand.get(cardsInHand.size()-1));
                 }
             }
 
@@ -60,6 +60,7 @@ public class Player {
         //Community card section:
         ArrayList<String> commRanks = new ArrayList<String>();
         ArrayList<String> commColors = new ArrayList<String>();
+        boolean commIsEmpty = true;
 
         JsonElement commonCards = cuccok.get("community_cards");
         JsonArray commonCardsArray = commonCards.getAsJsonArray();
@@ -81,9 +82,14 @@ public class Player {
             System.out.println("Itten nezzed");
 
         }
+        if (commRanks.size() > 0) commIsEmpty = false;
+        System.out.println("Community cards is empty: " + commIsEmpty);
+        if (commIsEmpty) {
+            buyIn = holdingCards(cardsInHand, buyIn);
+        } else {
+            buyIn = act(commRanks, cardsInHand, buyIn);
+        }
 
-
-        buyIn = holdingCards(ranksNeeded, buyIn);
         return buyIn;
     }
 
@@ -108,7 +114,7 @@ public class Player {
         }
     }
 
-    private int act (ArrayList<String> commRanks, ArrayList<String> myHole, int buyInt) {
+    private static int act (ArrayList<String> commRanks, ArrayList<String> myHole, int buyInt) {
         int sameCards = 0;
         for (String myCard: myHole) {
             for (String community : commRanks) {
