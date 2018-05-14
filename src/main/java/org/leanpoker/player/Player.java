@@ -14,10 +14,10 @@ public class Player {
         System.out.println(request);
         int buyIn = request.getAsInt("current_buy_in");
 
-        System.out.println(buyIn);
+        System.out.println("Buy in:" + buyIn);
         System.out.println("hello");
 
-        return 1000;
+        return buyIn;
     }
 
     public static void showdown(JsonElement game) {
