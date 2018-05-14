@@ -102,18 +102,19 @@ public class Player {
         System.out.println("TWOCARDS");
         System.out.println(holdingCards);
 
-        if (firstC.equals("7") || firstC.equals("8")  || firstC.equals("9") || firstC.equals("A")  || firstC.equals("K")  || firstC.equals("J") || firstC.equals("Q")){
-            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")){
+        if (firstC.equals("7") || firstC.equals("8") || firstC.equals("9") || firstC.equals("A") || firstC.equals("K") || firstC.equals("J") || firstC.equals("Q")) {
+            System.out.println("ITT");
+            if (secondC.equals("7") || secondC.equals("8") || secondC.equals("9") || secondC.equals("A") || secondC.equals("K") || secondC.equals("J") || secondC.equals("Q")) {
                 System.out.println("HIGHCARDS");
-                if(holdingCards.get(0).equals(holdingCards.get(1))){
+                if (holdingCards.get(0).equals(holdingCards.get(1))) {
                     System.out.println("EQAULED CARDS");
                     return buyIn * 3;
+                }
+                return buyIn * 2;
+            } else {
+                System.out.println("LOW");
+                return buyIn / 2;
             }
-            return buyIn * 2;
-        }
-        else {
-            System.out.println("LOW");
-            return buyIn /2;
         }
     }
 
